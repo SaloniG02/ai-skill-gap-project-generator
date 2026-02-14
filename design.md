@@ -7,6 +7,7 @@ A MERN stack platform that analyzes developer skills through GitHub data, identi
 ## Architecture
 
 ### System Architecture
+```mermaid
 graph TB
     User[Developer]
     Frontend[React Frontend]
@@ -65,6 +66,7 @@ graph TB
 
     Projects --> Queue
     Tasks --> Queue
+```
 
 
 ### Technology Stack
