@@ -7,16 +7,14 @@ A MERN stack platform that analyzes developer skills through GitHub data, identi
 ## Architecture
 
 ### System Architecture
-
-```mermaid
 graph TB
     User[Developer]
     Frontend[React Frontend]
     API[Express API Gateway]
-    
-    subgraph "Backend Services"
+
+    subgraph BackendServices
         Auth[Auth Service]
-        GitHub[GitHub Service]
+        GitHubSvc[GitHub Service]
         Analysis[Code Analysis Service]
         Skills[Skill Graph Service]
         Gaps[Skill Gap Service]
@@ -26,29 +24,48 @@ graph TB
         Progress[Progress Tracker]
         Learning[Learning Service]
     end
-    
-    subgraph "External APIs"
+
+    subgraph ExternalAPIs
         GitHubAPI[GitHub API]
         LLM[LLM APIs]
         Embeddings[Embedding Service]
     end
-    
-    subgraph "Data Layer"
+
+    subgraph DataLayer
         MongoDB[(MongoDB)]
         Redis[(Redis Cache)]
         VectorDB[(Vector Store)]
     end
-    
+
     Queue[Job Queue]
-    
+
     User --> Frontend
     Frontend --> API
+
     API --> Auth
-    API --> Backend Services
-    Backend Services --> External APIs
-    Backend Services --> Data Layer
-    Backend Services --> Queue
-```
+    API --> GitHubSvc
+    API --> Analysis
+    API --> Skills
+    API --> Gaps
+    API --> Projects
+    API --> Tasks
+    API --> Templates
+    API --> Progress
+    API --> Learning
+
+    GitHubSvc --> GitHubAPI
+    Analysis --> LLM
+    Projects --> LLM
+    Learning --> Embeddings
+
+    Auth --> MongoDB
+    Skills --> VectorDB
+    Gaps --> MongoDB
+    Progress --> Redis
+
+    Projects --> Queue
+    Tasks --> Queue
+
 
 ### Technology Stack
 
