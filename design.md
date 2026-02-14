@@ -12,7 +12,7 @@ graph TB
     Frontend[React Frontend]
     API[Express API Gateway]
 
-    subgraph BackendServices
+    subgraph BackendSvcs
         Auth[Auth Service]
         GitHubSvc[GitHub Service]
         Analysis[Code Analysis Service]
